@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-
 export default function ContactForm() {
     return (
         <div className="w-full bg-light pt-5 pb-5">
