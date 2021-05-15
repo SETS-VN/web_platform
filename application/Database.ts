@@ -1,5 +1,0 @@
-class Database implements IDatabase{
-
-    
-
-}
