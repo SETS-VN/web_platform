@@ -9,7 +9,7 @@ interface IDatabase{
     /**
      * persistData() is for persisting an Object to database
      * @returns {boolean} determine whether the transaction is successful or not
-     */
+     */                    
     persistData() : boolean;
 
     /**
