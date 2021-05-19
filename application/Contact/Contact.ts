@@ -7,9 +7,10 @@
  * @property {string} message - content of email
  */
 type Contact = {
+    id: number;
     name: string;
     email: string;
-    phone?: string;
+    phone: string;
     subject: string;
     message: string;
 }
