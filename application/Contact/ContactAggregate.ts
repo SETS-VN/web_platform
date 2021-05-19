@@ -23,11 +23,24 @@ class ContactAggregate{
         construct.contact = contact;
 
         // get id of this record in database
-        
+        let repo : IRepo = ContactRepository.getContactRepository();
+        construct.id = repo.getNewID();
 
         // get email of CRM teams from database
 
         return construct;
+    }
+
+    public getContact() : Contact{
+        return this.contact;
+    }
+
+    public getID() : number{
+        return this.id;
+    }
+
+    public getEmail() : String[]{
+        return this.email;
     }
 }
 
