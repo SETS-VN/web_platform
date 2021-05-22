@@ -17,5 +17,4 @@ interface IDatabase{
      * @returns {boolean} determine whether the transaction is successful or not
      */
     removeData() : boolean;
-
 }
