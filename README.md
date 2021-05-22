@@ -2,7 +2,19 @@
 
 # Rules
 1. To protect "master" branch, which is where our main product lies. Please commits your code only to "develop" branch. Project Manager will be the one who merges "develop" branch to "master" branch.
-2. Remember to comment code clearly so that eventhough who don't learn NextJS can understand the structure of code.
+1. Remember to comment code clearly so that eventhough who don't learn NextJS can understand the structure of code.
+
+# File Structure
+1. "/PlatformDescription" folder is for containing detailed description and design of web platform components.
+1. "/pages" and "/components" folder is for containing UI and controller based on DDD design.
+1. "/public" is for containing resources related to UI.
+1. "/application" folder is for containing __contractors__. It is called as Application Layer based on DDD design.
+	* __contractors__ are people who takes the job from customers. They do not build the house but will find (specialists) builders, electricians, ... to do the job. They will then gather the result and deliver it to customers. 
+1. "/domain" folder is for containing business logic, __specialists__. It can also be called as Domain Layer based on DDD design.
+	* __specialists__ are people who build the house.
+1. "/node_modules" folder is for containing packages. 
+
+# NextJS guideline
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
