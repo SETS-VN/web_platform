@@ -2,11 +2,11 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import sendEmail from "../../application/Contact/Adapter/contact-email"
 
 export default function ContactForm() {
-    const handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault();
-        
         const data = {
             id: null,
             name: event.target.name.value,
@@ -16,7 +16,8 @@ export default function ContactForm() {
             message: event.target.message.value
         }
 
-        
+        const result = sendEmail(data);
+        console.log(result);
     };
 
     return (

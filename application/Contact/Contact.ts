@@ -10,7 +10,7 @@ type Contact = {
     id: number;
     name: string;
     email: string;
-    phone: string;
+    phone?: string;
     subject: string;
     message: string;
 }

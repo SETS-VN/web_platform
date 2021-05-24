@@ -6,7 +6,7 @@ interface IEmail{
      * @param {any} content - content of the email 
      * @returns {boolean} - determine whether sent successfully
      */
-    sendEmail(email_to : string, content : any) : boolean;
+    sendEmail(email_to : string[], content : any) : boolean;
 
 }
 
