@@ -4,7 +4,15 @@ import Contact from "../Contact";
 
 class ContactRepository implements IRepo{
 
-    getNewID() {
+    private constructor(){}
+
+    public static getContactRepository() : ContactRepository{
+        let obj = new ContactRepository();
+
+        return obj;
+    }
+
+    getNewID() : number {
         throw new Error("Method not implemented.");
     }
 
