@@ -7,16 +7,16 @@ class ContactAggregate{
 
     private contact : Contact;
     private email : string[];
-    private id: number;
 
     /**
      * @type {number} id - automatically assigned by repo-contact-implementation
      */
-    // private id : number;
+    private id : number;
 
-    private constructor(givenContact: Contact){
+    constructor(givenContact: Contact){
         this.contact = givenContact;
-        this.email = SendToEmail["crm-emails"]
+        this.email = SendToEmail["crm-emails"];
+        this.id = -1;
     }
 
     /**
@@ -44,7 +44,7 @@ class ContactAggregate{
         return this.id;
     }
 
-    public getEmail() : String[]{
+    public getEmail() : string[]{
         return this.email;
     }
 }

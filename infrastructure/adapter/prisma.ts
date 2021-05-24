@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
-let prismaClient: PrismaClient
+// let prismaClient: PrismaClient
 
-prismaClient = new PrismaClient();
+// prismaClient = new PrismaClient();
 
-export default prismaClient;
+// export default prismaClient;

@@ -1,15 +1,8 @@
 import IEmail from "../../email-interface"
 import Contact from "../Contact"
-import {SMTPClient, Message} from 'emailjs'
-import userSendEmail from '../../../email-accounts/ducanh-email.json'
+import SenderEmailInfo from '../../../email-accounts/sender-email-info.json'
+import emailjs from 'emailjs-com';
 
-
-const EmailClient:SMTPClient = new SMTPClient({
-    user: userSendEmail.user,
-    password: userSendEmail.password,
-    host: userSendEmail.host,
-    ssl: userSendEmail.ssl,
-})
 
 class ContactEmail implements IEmail{
 
@@ -30,20 +23,19 @@ class ContactEmail implements IEmail{
         return txt;
     }
 
-    public sendEmail(email: string[], content: Contact) : boolean {
-        let isSuccessful = true;
-        const msg: Message = new Message({
-            text: this.ContactToEmailText(content),
-            from: userSendEmail.user,
-            to: email.join(","),
-            subject: content.subject,
-        })
-        
-        EmailClient.send(msg, (err, message)=>{
-            console.log(err || message);
-            isSuccessful = false;
-        })
-        return isSuccessful;
+    public async sendEmail(recipients: string[], content: Contact){
+        let results = false;
+        await emailjs.send(
+            SenderEmailInfo.SenderEmailInfo["SERVICE_ID"], 
+            SenderEmailInfo.SenderEmailInfo["TEMPLATE_ID"], 
+            {...content, sets_email: recipients.join(",")}, 
+            SenderEmailInfo.SenderEmailInfo["USER_ID"])
+        .then((response) => {
+            results = true;
+        }, (err) => {
+            results = false;
+        });
+        return results;
     }
 }
 
