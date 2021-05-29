@@ -9,17 +9,22 @@ import Alert from 'react-bootstrap/Alert'
 
 import LoadingForm from './subcomponents/loading-form';
 
+import CrmEmails from '../../email-accounts/crm-emails.json';
+
+/**
+ * Using https://www.emailjs.com/ 
+ * This site has a user_id (to identify the user - or in this case, my account with ducanh.tranpro@gmail.com)
+ * A service_id (which is used to determine the type of email service used: gmail, outlook, etc)
+ * A template id: the template that we use to send the email
+ */
 const SenderEmailInfo = {
     SERVICE_ID: `service_am7hhtb`,
     TEMPLATE_ID: `template_m768glm`,
     USER_ID: `user_1Cmnk1EhM9brEFQlxIgrv`
 }
 
-const EmailTo = [`ducanh.tranpro@gmail.com`, `adt008@bucknell.edu`];
-
-
-
 export default function ContactForm() {
+    // create empty contact message for formData useState
     let contactEmpty: Contact = {
         id: -1,
         name: "",
@@ -28,25 +33,37 @@ export default function ContactForm() {
         subject: "",
         message: "",
     }
+
+    // formData: holds values for the email to send
     const [formData, setFormData] = useState(contactEmpty);
+    
+    // formState: holds loading, error, success values
     const [formState, setFormState] = useState("unsubmitted");
 
+    // submit event hander
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
+        // set load
         setFormState("loading");
+
+        // use emailSender from adapter to send and get results
         const result: boolean = await emailSender(formData);
         if (result){
+            // success message
             setFormState("success");
         }
         else {
+            // error message
             setFormState("error")
         }
     };
 
+    // updates form every time the user inputs / changes something
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+    // feedback: is null if no send, else there is 'load', 'error', 'success' state
     const FormUIFeedback = (): JSX.Element | null => {
         if (formState === "unsubmitted"){
             return null;
